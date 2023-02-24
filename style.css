@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 1rem;
+   
+}
+.radfone{
+    height: 700px;
+    width: 360px;
+    border: 1px solid #224378;
+    border-radius: 15px;
+    position: relative;
+    background-image: url(./images/reebok.jpg);
+    opacity: 0.9;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 2px 2px 2px #224378;;
+}
+.cameradiv{
+    height: 1.4rem;
+    width: 7rem;
+    background-color: black;
+    margin-left: 8rem;
+    /* transform: translateX(130px); */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  
+}
+
+.camm{
+    font-size: 8.1rem;
+   position: absolute;
+  margin-top: -6.3rem;
+  color: #211e1e;  
+}
+.cammm{
+    font-size: 8.1rem;
+   position: absolute;
+   margin-left: 4rem;
+  margin-top: -6.3rem;
+  color: #211e1e;  
+}
+.batterydiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    float: right;
+    margin-top: -1.8rem;
+    padding: 0.5rem;
+    color: #fff;
+}
+.battery {
+   font-size: 1.6rem;
+}
+.cell{
+    font-size: 1.3rem;
+}
+.leftside p{
+    margin-top: -1.5rem;
+    padding: 0.5rem;
+    color: #fff;
+}
+.dateAndTime{
+    padding-top: 2rem;
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: #fff;
+ 
+}
+.date{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+.time{
+    font-size: 4rem;
+}
+.flashCamDiv{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+  gap: 14rem;
+   position: absolute;
+   bottom: 0;
+   color: #fff;
+   border: none;
+}
+.flashCamDiv button{
+    background: none;
+    border: none;
+}
+.flashlight, .cam {
+    border: none;
+    background-color: #222;
+   border-radius: 50%;
+    height: 2rem;
+    color: #fff;
+    width: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.flashlight{
+    transform: rotate(-45deg);
+   
+   
+}
+.flashlight:hover{
+    background-color: #fff;
+    color: #222;
+}
+.cam:hover{
+    background-color: #fff;
+    color: #222; 
+}
+
+.flashMode{
+    background-color: #763131;
+}
+.menu{
+    position: absolute;
+    bottom: 3%;
+    left: 48%;
+
+}
+.menubtn{
+   display: flex;
+   font-size: 1.6rem;
+   border: none;
+background: none;
+    /* position: absolute;
+    bottom: 5%;
+    left: 50%;
+    font-size: 1.5rem; */
+    /* cursor: pointer; */
+}
