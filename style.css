@@ -9,7 +9,7 @@ body{
     justify-content: center;
     min-height: 50vh;
     padding: 1rem;
-   
+   background-color: rgba(0, 0, 0, 0.437);
 }
 .radfone{
     height: 700px;
@@ -90,7 +90,8 @@ body{
     padding: 1rem;
     display: flex;
     align-items: center;
-  gap: 14rem;
+    gap: 6rem;
+    justify-content: space-between;
    position: absolute;
    bottom: 0;
    color: #fff;
@@ -112,13 +113,15 @@ body{
     transition: all 0.5s ease;
 }
 .flashlight{
-    transform: rotate(-45deg);
-   
-   
+    transform: rotate(-45deg);   
 }
-.flashlight:hover{
-    background-color: #fff;
-    color: #222;
+.menubtn{
+    font-size: 1.5rem;
+}
+#rad{
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
 }
 .cam:hover{
     background-color: #fff;
@@ -126,22 +129,131 @@ body{
 }
 
 .flashMode{
-    background-color: #763131;
+    background-color: #fff;
 }
-.menu{
+.apps{
+    padding: 1rem;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 2.6rem;
+}
+.icon{
+    color: rgb(174, 64, 64);
+    font-size:2rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.icon:hover{
+    background-color: #22222264;
+}
+.tiktok{
+    background-color: black;
+    color: white;
+}
+.whatsapp{
+    background-color: rgb(86, 185, 50);
+    color: white;  
+}
+.mail{
+    background-color: white;
+    color: red;
+}
+.facebook{
+    background-color: rgba(0, 0, 255, 0.695);
+    color: white;
+}
+.discord{
+    background-color: #7289da;
+    color: white;
+}
+.yahoo{
+    background-color: #720e9e;
+    color: white;
+}
+.file{
+    background-color: white;
+    color:rgba(0, 0, 255, 0.695);   
+}
+.cameraout{
+    background-color: #2222227f;
+    color:black; 
+}
+.applelogo{
+    background-color:black;
+    color:white; 
+}
+.clock{
+    background-color:black;
+    color:white;
+}
+.appstore{
+    background-color: #0084c5;
+    color:white;
+}
+.navigate{
+    background: linear-gradient(to right, pink ,green, yellow, white);
+    color: rgba(0, 0, 255, 0.449);
+}
+.calendar{
+    background-color: white;
+    color: black;
+}
+.instagram{
+    background: linear-gradient(to right,rgb(255, 0, 0), rgb(255, 255, 0), rgb(128, 0, 128));
+    color: white; 
+}
+.bitcoin{
+    background-color: black;
+    color: yellow;
+}
+.chrome{
+    background-color: white;
+    color: rgba(255, 0, 0, 0.738);
+}
+.tik{
+    display: block;
+}
+.settings{
+    background-color: #2222227f;
+    color: black;
+}
+.call{
+    background-color: rgba(0, 128, 0, 0.832);
+    color: white;
+}
+.wechat{
+    background-color: rgba(0, 128, 0, 0.832);
+    color: white;
+}
+.music{
+    background-color: rgba(255, 0, 0, 0.852);
+    color: white
+}
+.iconText{
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+.bottomNav{
     position: absolute;
-    bottom: 3%;
-    left: 48%;
+    bottom: 0;
+    padding: 0.5rem;
 
 }
-.menubtn{
-   display: flex;
-   font-size: 1.6rem;
-   border: none;
-background: none;
-    /* position: absolute;
-    bottom: 5%;
-    left: 50%;
-    font-size: 1.5rem; */
-    /* cursor: pointer; */
+.nav{
+    background-color: #1c21239d;
+    border-radius: 10px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2.5rem;
+}
+.nav button{
+    border: none;
+    background: none;
+    cursor: pointer;
 }

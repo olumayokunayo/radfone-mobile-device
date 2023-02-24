@@ -12,10 +12,13 @@
 </head>
 <body>
     <main class="radfone" id="radfone">
-       <div class="cameradiv">
-        <span class="camm">.</span>
-        <span class="cammm">.</span>
-       </div>
+        <div id="rad">
+
+            <div class="cameradiv">
+             <span class="camm">.</span>
+             <span class="cammm">.</span>
+            </div>
+       
        <div class="batterydiv">
         <span><ion-icon class="cell" name="cellular-outline"></ion-icon></span>
         <span class="lte">LTE</span>
@@ -28,18 +31,20 @@
         <p id="show"></p>
         <p id="show1"></p>
        </div>
-       <div class="menu">
-        <button onclick="appsBtn()"><ion-icon name="apps-outline"></ion-icon></button>
-       </div>
        <div class="flashCamDiv">
         <div class="flash">
             <button id="flashBtn"><ion-icon class="flashlight" name="flashlight-outline"></ion-icon></button>  
+        </div>
+        <div class="menu">
+            <button id="appsBtn"><ion-icon class="menubtn" name="apps-outline"></ion-icon></button>
         </div>
         <div class="camera">
             <button id="camBtn"><ion-icon class="cam" name="camera-outline"></ion-icon></button>
         </div>
        </div>
+    </div>
     </main>
     <script src="./app.js"></script>
 </body>
 </html>
+
