@@ -191,8 +191,10 @@ function callBtn(){
 function keypadBtn(){
     screen.innerHTML = ""
     show1.innerHTML = `<div class="keypadDiv">
+    <div class="inputDiv">
     <input id="screenInput" type="text">
-    <p>Add number</p>
+    <p class="save">Add Number</p>
+    </div>
     <div class="numbers">
        <button class="btn" data-num="1">
        <p>1</p>
@@ -243,8 +245,13 @@ function keypadBtn(){
        <span>&nbsp;</span>
        </button>
     </div>
+    <div class="callndel">
     <div class="dialdiv">
     <button class="btn-call"><ion-icon class="dial" name="call-outline"></ion-icon></button>
+    </div>
+    <div class="deldiv">
+    <button onclick="delBtn()" class="btn-del"><ion-icon name="backspace-outline"></ion-icon></button>
+    </div>
     </div>
 </div> 
 <div class="callSection">
@@ -270,7 +277,8 @@ function keypadBtn(){
     </div>
     </div>
 `
-
+let btndel = document.querySelector(".btn-del");
+let save = document.querySelector(".save");
 let screenInput = document.getElementById("screenInput");
 let buttons = document.querySelectorAll(".btn");
 
@@ -278,9 +286,18 @@ buttons.forEach(function(btn){
     btn.addEventListener("click", function(e){
        let digits = e.currentTarget.dataset.num;
        screenInput.value += `${digits}`
+       btndel.style.display = "block"
+       save.style.display = "block"
     })
 
 })
 
 }
 
+function delBtn(){
+ let inputValue = screenInput.value;
+ if(inputValue.length > 0){
+   inputValue = inputValue.slice(0,-1)
+   screenInput.value = inputValue;
+ }
+}

@@ -9,7 +9,7 @@ body{
     justify-content: center;
     min-height: 50vh;
     padding: 1rem;
-   background-color: rgba(0, 0, 0, 0.437);
+   background-color: rgba(0, 0, 0, 0.724);
 }
 .radfone{
     overflow: hidden;
@@ -29,12 +29,9 @@ body{
     width: 7rem;
     background-color: black;
     margin-left: 8rem;
-    /* transform: translateX(130px); */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-  
 }
-
 .camm{
     font-size: 8.1rem;
    position: absolute;
@@ -43,10 +40,10 @@ body{
 }
 .cammm{
     font-size: 8.1rem;
-   position: absolute;
-   margin-left: 4rem;
-  margin-top: -6.3rem;
-  color: #211e1e;  
+    position: absolute;
+    margin-left: 4rem;
+    margin-top: -6.3rem;
+    color: #211e1e;  
 }
 .batterydiv{
     display: flex;
@@ -124,6 +121,14 @@ body{
 }
 .menubtn{
     font-size: 1.5rem;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.2rem;
+    transition: all 0.5s ease;
+}
+.menubtn:hover{
+    transform: scale(1.1);
 }
 #rad{
     height: 100%;
@@ -240,18 +245,6 @@ body{
     position: relative;
 
 }
-/* .wechat::after{
-    content: "";
-    position: absolute;
-    top: -10%;
-
-    z-index: 999999;
-    background-color: red;
-    height: 1rem;
-    width: 4rem;
-    border-radius: 10px;
-
-} */
 .music{
     background-color: rgba(255, 0, 0, 0.852);
     color: white
@@ -283,11 +276,8 @@ body{
     background: none;
     cursor: pointer;
 }
-.callSection{
-}
 .callNavDiv{
     position: absolute;
-    /* gap: 10rem; */
     bottom: 0;
 }
 .navCallSection{
@@ -323,8 +313,6 @@ body{
 }
 .keypadDiv input{
     width: 100%;
-    margin-bottom: 2rem;
-    height: 3rem;
     border: none;
     outline:none;
     background-color: black;
@@ -332,19 +320,28 @@ body{
     font-size: 2rem;
     color: #fff;
 }
+.inputDiv{
+   margin: -2.5rem 0rem 3rem 0rem;
+}
+.save{
+    text-align: center;
+    color: rgb(16, 149, 231);
+    font-size: 1rem;
+    display: none;
+}
 .numbers{
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-columns: repeat(3,1fr);
-    gap: 1.3rem;
+    gap: 1.6rem;
     color: white;
    
 }
 .numbers button{
     padding: 1rem;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 4rem;
+    width: 4rem;
     border-radius: 50%;
     text-align: center;
     display: flex;
@@ -352,7 +349,8 @@ body{
     align-items: center;
     justify-content: center;
     border: none;
-    font-size: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
 }
 .numbers p{
     font-size: 1.5rem;
@@ -365,13 +363,29 @@ body{
     color: #fff;
 }
 .dialdiv button{
-    height: 3.5rem;
-    width: 3.5rem; 
+    height: 4rem;
+    width: 4rem; 
     border-radius: 50%;
     border: none;
-    margin: 1rem 0 0 5rem;
     font-size: 2rem;
     font-weight: 600;
     background-color: rgba(72, 195, 72, 0.772);
     color: #fff;
+    cursor: pointer;
+}
+.callndel{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: 3rem;
+    margin:1.2rem 0 0 5.2rem;
+}
+.deldiv button{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1.6rem;
+}
+.btn-del{
+    display: none;
 }
