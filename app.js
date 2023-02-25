@@ -1,6 +1,7 @@
 // GET DATE 
 
 let screen = document.getElementById("show");
+let staySafe = document.querySelector(".staySafe");
 
 function getDate(){
     setInterval(() => {
@@ -28,20 +29,21 @@ getDate();
 
 let flashBtn = document.getElementById("flashBtn");
 let radfone = document.getElementById("radfone");
-let flashMode = document.querySelector(".flashMode");
+let whiteMode = document.querySelector(".whiteMode");
+let darkMode = document.querySelector(".darkMode");
 let flashlight = document.querySelector(".flashlight");
 let rad = document.getElementById("rad")
 let cam = document.querySelector(".cam")
 let menu = document.querySelector(".menu")
 
 flashBtn.addEventListener("click", function(){
-if(rad.classList.contains("flashMode")){
-    rad.classList.remove("flashMode")
+if(rad.classList.contains("whiteMode")){
+    rad.classList.remove("whiteMode")
     flashlight.style.backgroundColor = "#222"
     cam.style.display = "block"
     menu.style.display = "block"
 }else {
-    rad.classList.add("flashMode")
+    rad.classList.add("whiteMode")
     flashlight.style.backgroundColor = "#222"
     flashlight.style.color = "#fff"
     cam.style.display = "none"
@@ -50,8 +52,9 @@ if(rad.classList.contains("flashMode")){
 })
 
 
-let show1 = document.getElementById("show1");
+// SHOW APPS
 
+let show1 = document.getElementById("show1");
 let appsBtn = document.getElementById("appsBtn")
 
 appsBtn.addEventListener("click", function(){
@@ -133,13 +136,151 @@ appsBtn.addEventListener("click", function(){
    </div>
    <div class="bottomNav">
    <nav class="nav">
-   <button><ion-icon class="icon call"name="call-outline"></ion-icon></button>
-   <button><ion-icon class="icon chrome" name="logo-chrome"></ion-icon></button>
-   <button><ion-icon class="icon wechat" name="logo-wechat"></ion-icon></button>
-   <button><ion-icon class="icon music"name="musical-notes-outline"></ion-icon></button>
+   <button onclick="callBtn()"><ion-icon class="icon call" name="call-outline"></ion-icon></button>
+   <button onclick="chromeBtn()"><ion-icon class="icon chrome" name="logo-chrome"></ion-icon></button>
+   <button onclick="wechatBtn()"><ion-icon class="icon wechat" name="logo-wechat"></ion-icon></button>
+   <button onclick="musicBtn()"><ion-icon class="icon music"name="musical-notes-outline"></ion-icon></button>
    </nav>
    </div>
 </div>`;
+})
 
+// CALL SECTION
+
+function callBtn(){
+    show1.innerHTML = ""
+    show1.innerHTML = `<div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>`
+    rad.classList.add("darkMode")
+    
+    function getDate(){
+        setInterval(() => {
+        let date = new Date().toString().split(" ");
+        let newDate = `${date[0]}, ${date[1]} ${date[2]} `
+        let hours = new Date().getHours();
+        let minutes = new Date().getMinutes();
+        hours = hours < 12 ? "0" + hours : hours;
+        minutes = minutes < 12 ? "0" + minutes : minutes;
+        let time = `${hours}:${minutes}`
+        staySafe.textContent = `${time}`
+        }, 1000); 
+    }
+    getDate();
+}
+
+function keypadBtn(){
+    screen.innerHTML = ""
+    show1.innerHTML = `<div class="keypadDiv">
+    <input id="screenInput" type="text">
+    <p>Add number</p>
+    <div class="numbers">
+       <button class="btn" data-num="1">
+       <p>1</p>
+       <span>&nbsp;</span>
+       </button>
+       <button class="btn" data-num="2">
+       <p>2</p>
+       <span>ABC</span>
+       </button>
+       <button class="btn" data-num="3">
+       <p>3</p>
+       <span>DEF</span>
+       </button>
+       <button class="btn" data-num="4">
+       <p>4</p>
+       <span>GHI</span>
+       </button>
+       <button class="btn" data-num="5">
+       <p>5</p>
+       <span>JKL</span>
+       </button>
+       <button class="btn" data-num="6">
+       <p>6</p>
+       <span>MNO</span>
+       </button>
+       <button class="btn" data-num="7">
+       <p>7</p>
+       <span>PQRS</span>
+       </button>
+       <button class="btn" data-num="8">
+       <p>8</p>
+       <span>TUV</span>
+       </button>
+       <button class="btn" data-num="9">
+       <p>9</p>
+       <span>WXYZ</span>
+       </button>
+       <button class="btn" data-num="*">
+       <p>*</p>
+       <span>&nbsp;</span>
+       </button>
+       <button class="btn" data-num="0">
+       <p>0</p>
+       <span>+</span>
+       </button>
+       <button class="btn" data-num="#">
+       <p>#</p>
+       <span>&nbsp;</span>
+       </button>
+    </div>
+    <div class="dialdiv">
+    <button class="btn-call"><ion-icon class="dial" name="call-outline"></ion-icon></button>
+    </div>
+</div> 
+<div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>
+`
+
+let screenInput = document.getElementById("screenInput");
+let buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(function(btn){
+    btn.addEventListener("click", function(e){
+       let digits = e.currentTarget.dataset.num;
+       screenInput.value += `${digits}`
+    })
 
 })
+
+}
+

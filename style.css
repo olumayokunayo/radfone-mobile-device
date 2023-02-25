@@ -12,6 +12,7 @@ body{
    background-color: rgba(0, 0, 0, 0.437);
 }
 .radfone{
+    overflow: hidden;
     height: 700px;
     width: 360px;
     border: 1px solid #224378;
@@ -54,14 +55,20 @@ body{
     gap: 0.5rem;
     float: right;
     margin-top: -1.8rem;
-    padding: 0.5rem;
+    padding: 1rem;
     color: #fff;
 }
+.staySafe{
+    padding: 1rem;
+}
 .battery {
-   font-size: 1.6rem;
+   font-size: 1.4rem;
 }
 .cell{
-    font-size: 1.3rem;
+    font-size: 1rem;
+}
+.lte{
+    font-size: 0.8rem;
 }
 .leftside p{
     margin-top: -1.5rem;
@@ -128,8 +135,11 @@ body{
     color: #222; 
 }
 
-.flashMode{
+.whiteMode{
     background-color: #fff;
+}
+.darkMode{
+    background-color: #000;
 }
 .apps{
     padding: 1rem;
@@ -144,6 +154,7 @@ body{
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.5s ease;
+    /* position: relative; */
 }
 .icon:hover{
     background-color: #22222264;
@@ -226,7 +237,21 @@ body{
 .wechat{
     background-color: rgba(0, 128, 0, 0.832);
     color: white;
+    position: relative;
+
 }
+/* .wechat::after{
+    content: "";
+    position: absolute;
+    top: -10%;
+
+    z-index: 999999;
+    background-color: red;
+    height: 1rem;
+    width: 4rem;
+    border-radius: 10px;
+
+} */
 .music{
     background-color: rgba(255, 0, 0, 0.852);
     color: white
@@ -245,6 +270,7 @@ body{
 
 }
 .nav{
+    position: relative;
     background-color: #1c21239d;
     border-radius: 10px;
     padding: 1rem;
@@ -256,4 +282,96 @@ body{
     border: none;
     background: none;
     cursor: pointer;
+}
+.callSection{
+}
+.callNavDiv{
+    position: absolute;
+    /* gap: 10rem; */
+    bottom: 0;
+}
+.navCallSection{
+    background-color: #222;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    gap: 2.5rem;
+}
+.navCallSection button{
+    border: none;
+    background: none;
+}
+.callIcon{
+    font-size: 1.5rem;
+    color: #6c6b6b;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.callIcon:hover{
+    color: #fff;
+}
+.navspan{
+    text-align: center;
+    color: #6c6b6b;
+}
+.keypadDiv{
+  padding: 4rem;
+  padding-top: 5rem;
+    color: white;
+}
+.keypadDiv input{
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 3rem;
+    border: none;
+    outline:none;
+    background-color: black;
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+}
+.numbers{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.3rem;
+    color: white;
+   
+}
+.numbers button{
+    padding: 1rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1rem;
+}
+.numbers p{
+    font-size: 1.5rem;
+}
+.numbers span{
+    font-size: 0.8rem;
+}
+.number{
+    background-color: #424040;
+    color: #fff;
+}
+.dialdiv button{
+    height: 3.5rem;
+    width: 3.5rem; 
+    border-radius: 50%;
+    border: none;
+    margin: 1rem 0 0 5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: rgba(72, 195, 72, 0.772);
+    color: #fff;
 }
