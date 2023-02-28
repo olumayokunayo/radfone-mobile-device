@@ -125,13 +125,10 @@ appsBtn.addEventListener("click", function(){
    <span>Binance</span>
    </div>
    <div class="iconText">
-   <p><ion-icon class="icon chrome" name="logo-chrome"></ion-icon></p>
-   <span>Chrome</span>
-   </div>
-   <div class="iconText">
    <p><ion-icon  class="icon settings" name="settings-outline"></ion-icon></p>
    <span>Settings</span>
    </div>
+  
 
    </div>
    <div class="bottomNav">
@@ -157,11 +154,11 @@ function callBtn(){
             <span>Favorites</span>
             </div>
             <div class="navspan">
-            <button><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
             <span>Recents</span>
             </div>
             <div class="navspan">
-            <button><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
             <span>Contact</span>
             </div>
             <div class="navspan">
@@ -173,7 +170,7 @@ function callBtn(){
     </div>`
     rad.classList.add("darkMode")
     
-    function getDate(){
+  function getDate(){
         setInterval(() => {
         let date = new Date().toString().split(" ");
         let newDate = `${date[0]}, ${date[1]} ${date[2]} `
@@ -193,7 +190,26 @@ function keypadBtn(){
     show1.innerHTML = `<div class="keypadDiv">
     <div class="inputDiv">
     <input id="screenInput" type="text">
-    <p class="save">Add Number</p>
+    <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <h3>New Contact</h3>
+     <span> <ion-icon class="user" name="person-circle-outline"></ion-icon></span>
+       <input type="text" id="fName" placeholder="First name">
+       <input type="text" id="lName" placeholder="Last name">
+       <input type="text" id="mobile" placeholder="mobile">
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeBtn()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button onclick="saveContactBtn()" type="button" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <p onclick="saveBtn()" class="save">Add Number</p>
     </div>
     <div class="numbers">
        <button class="btn" data-num="1">
@@ -247,7 +263,7 @@ function keypadBtn(){
     </div>
     <div class="callndel">
     <div class="dialdiv">
-    <button class="btn-call"><ion-icon class="dial" name="call-outline"></ion-icon></button>
+    <button class="btn-call" onclick="dialBtn()"><ion-icon class="dial" name="call-outline"></ion-icon></button>
     </div>
     <div class="deldiv">
     <button onclick="delBtn()" class="btn-del"><ion-icon name="backspace-outline"></ion-icon></button>
@@ -262,11 +278,11 @@ function keypadBtn(){
             <span>Favorites</span>
             </div>
             <div class="navspan">
-            <button><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
             <span>Recents</span>
             </div>
             <div class="navspan">
-            <button><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
             <span>Contact</span>
             </div>
             <div class="navspan">
@@ -277,6 +293,9 @@ function keypadBtn(){
     </div>
     </div>
 `
+
+
+// KEYPAD BUTTONS
 let btndel = document.querySelector(".btn-del");
 let save = document.querySelector(".save");
 let screenInput = document.getElementById("screenInput");
@@ -294,10 +313,204 @@ buttons.forEach(function(btn){
 
 }
 
+//  DELETE 
+
 function delBtn(){
  let inputValue = screenInput.value;
  if(inputValue.length > 0){
    inputValue = inputValue.slice(0,-1)
    screenInput.value = inputValue;
  }
+}
+
+// CALL
+
+function dialBtn(){
+    let recentArr = [];
+    let screenInput = document.getElementById("screenInput");
+    let phoneNumber = screenInput.value;
+   
+        let date = new Date().toString().split(" ");
+        let month = new Date().getMonth();
+        let newDate = `${date[0]}, ${date[1]} ${date[2]} `
+        let hours = new Date().getHours();
+        let minutes = new Date().getMinutes();
+        hours = hours < 12 ? "0" + hours : hours;
+        minutes = minutes < 12 ? "0" + minutes : minutes;
+        let time = `${hours}:${minutes}`
+        let updatedDate = `${date[2]}/${month}/${date[3]}`
+
+ 
+    console.log(time,updatedDate);
+    const validPhone = validPhoneNumber(phoneNumber)
+
+    if(validPhone){
+      let callInfo = {
+        number: validPhone,
+        time: time, 
+        date: updatedDate
+        
+      }
+      console.log(callInfo);
+      let recentArr = JSON.parse(localStorage.getItem("log")) || [];
+      recentArr.push(callInfo)
+      localStorage.setItem("log", JSON.stringify(recentArr))
+      console.log(recentArr);
+        alert("Calling")
+        // initiateCall(validPhone)
+    } else {
+        alert("Number not available")
+    }
+}
+
+function validPhoneNumber(phoneNumber){
+
+    // remove all numeric 
+    const newPhoneNumber = phoneNumber.replace(/\D/g, "");
+
+    // set to 10 digits
+    const phonePattern = (/^\d{11}$/);
+
+    // test if number passes pattern test (11 digits)
+    const isValidPhoneNumber = phonePattern.test(newPhoneNumber)
+
+    if(isValidPhoneNumber){
+        return newPhoneNumber;
+    } else {
+        return false;
+    }
+}
+
+
+    //   function initiateCall(phoneNumber) {
+    //     const accountSid = 'AC5d2d20165f208a9e375d41776c3a3c04';
+    //     const authToken = '2fa60edf0d21419d0ae4d7bb4c8d5179';
+    //     const client = require('twilio')(accountSid, authToken);
+        
+    //     client.calls.create({
+    //       url: 'http://demo.twilio.com/docs/voice.xml',
+    //       to: `+1${phoneNumber}`,
+    //       from: '+12766378786'
+    //     })
+    //     .then(call => console.log(call.sid))
+    //     .catch(error => console.log(error));
+    //   }
+
+    let show2 = document.getElementById("show2")
+
+
+   function recentBtn(){
+    show1.innerHTML = `<div class="logsDiv">
+    <div class="logs">
+    <button>ALL</button>
+    <button>MISSED</button>
+    </div>
+    <h3>Recents</h3>
+    </div>
+    `
+    let gotten = JSON.parse(localStorage.getItem("log"))
+    console.log(gotten);
+    gotten.forEach(element => {
+        show1.innerHTML += `<div class="recentDiv">
+        <div class"numWrap">
+        <span class="outgoing material-symbols-outlined">
+        call_made </span>
+        <div class="callLog">
+        <span>
+        <p class="num">${element.number}</p></span>
+        </div>
+        </div>
+        <div class="TimeAndDate">
+        <p class="date">${element.date}</p>
+        <p class="time">${element.time}</p>
+        </div>
+        </div>
+        <div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>`
+
+    });
+   }
+
+function saveBtn(){
+    let modal = document.querySelector(".modal")
+    // alert("save?")
+modal.style.display = "block"
+}
+
+function saveContactBtn(){
+    let modal = document.querySelector(".modal")
+    let fName = document.getElementById("fName")
+    let lName = document.getElementById("lName")
+    let mobile = document.getElementById("mobile")
+    // let screenInput = document.getElementById("screenInput");
+    // mobile.textContent = screenInput.value;
+    // let phoneNumber = screenInput.value;
+    let contactInfo = {
+        firstName: fName.value,
+        lastName: lName.value,
+        mobile: mobile.value
+    }
+
+    let contactArr = JSON.parse(localStorage.getItem("contact")) || [];
+    contactArr.push(contactInfo);
+    localStorage.setItem("contact",JSON.stringify(contactArr));
+    modal.style.display = "none";
+    // window.location.reload()
+    console.log(contactArr);
+}
+
+function contactBtn(){
+    show1.innerHTML =  `<p class="con">Contacts</p>`
+    let savedContacts = JSON.parse(localStorage.getItem("contact"))
+    console.log(savedContacts);
+    savedContacts.forEach(element => {
+        console.log(element);
+        show1.innerHTML += `<div class="contactsDiv">
+        <div class="contacts">
+        <p>${element.firstName}</p>
+        </div>
+        </div>
+        <div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>`
+    });
 }

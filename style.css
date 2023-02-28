@@ -35,16 +35,16 @@ body{
 .camm{
     font-size: 8.1rem;
    position: absolute;
-  margin-top: -6.3rem;
+  margin-top: -8rem;
   color: #211e1e;  
 }
-.cammm{
-    font-size: 8.1rem;
+/* .cammm{
+    font-size: 8rem;
     position: absolute;
     margin-left: 4rem;
-    margin-top: -6.3rem;
+    margin-top: -6.1rem;
     color: #211e1e;  
-}
+} */
 .batterydiv{
     display: flex;
     align-items: center;
@@ -150,7 +150,11 @@ body{
     padding: 1rem;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
-   gap: 2.6rem;
+   gap: 2.2rem;
+  overflow-y: scroll;
+}
+.appsDiv{
+    overflow-y: scroll;
 }
 .icon{
     color: rgb(174, 64, 64);
@@ -259,7 +263,8 @@ body{
 .bottomNav{
     position: absolute;
     bottom: 0;
-    padding: 0.5rem;
+    padding: 1rem;
+    width: 100%;
 
 }
 .nav{
@@ -267,9 +272,10 @@ body{
     background-color: #1c21239d;
     border-radius: 10px;
     padding: 1rem;
+
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 2.5rem;
+    /* gap: 1rem; */
 }
 .nav button{
     border: none;
@@ -287,7 +293,7 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 .navCallSection button{
     border: none;
@@ -310,6 +316,7 @@ body{
   padding: 4rem;
   padding-top: 5rem;
     color: white;
+    position: relative;
 }
 .keypadDiv input{
     width: 100%;
@@ -321,7 +328,7 @@ body{
     color: #fff;
 }
 .inputDiv{
-   margin: -2.5rem 0rem 3rem 0rem;
+   margin: -3.5rem 0rem 3rem 0rem;
 }
 .save{
     text-align: center;
@@ -388,4 +395,92 @@ body{
 }
 .btn-del{
     display: none;
+}
+.num{
+    color: white;
+}
+
+.recentDiv{
+    padding: 0.5rem 1rem;
+    border-top: 1px solid rgb(55, 53, 53);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logs{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.logs button{
+    border: none;
+    color: white;
+    background-color: gray;
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+.logsDiv{
+    padding: 1rem;
+}
+.logsDiv h3{
+    color: white;
+    font-size: 1.5rem;
+}
+.TimeAndDate{
+    color: white;
+    font-size: 1rem;
+}
+.callLog{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.time, .date{
+    font-size: 1rem;
+}
+.outgoing{
+    color:green;
+    font-size: 1rem;
+}
+.numWrap{
+    display: grid
+}
+.modal{
+    padding: 1rem;
+    color: white;
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: -5%;
+}
+.modal-body{
+    color: black;
+    text-align: center;
+}
+.modal-body h3{
+    color: #000;
+    font-size: 2rem;
+}
+.modal-body input{
+    background-color: white;
+    border-bottom: 1px solid gray;
+    color: rgb(45, 44, 44);
+    text-align: left;
+}
+.modal-body input::placeholder{
+    font-size: 1rem;
+    text-align: left;
+
+}
+.modal-body .user{
+    font-size: 2rem;
+}
+.contactsDiv {
+    color: white;
+}
+.con{
+    color: white;
 }
