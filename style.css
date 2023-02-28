@@ -479,8 +479,40 @@ body{
     font-size: 2rem;
 }
 .contactsDiv {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
     color: white;
+  padding:0 0.5rem;
+}
+.contacts{
+    display: flex;
+   align-items: center;
+   gap: 1rem;
+   justify-content: space-between;
+
 }
 .con{
     color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.contactBtn{
+    border: none;
+    background: none;
+    color: white;
+    display: none;
+    color: red;
+    cursor: pointer;
+}
+.edit{
+    color: lightblue;
+    cursor: pointer;
+}
+
+.contactHead{
+    display: flex;
+    align-items: center;
+   gap: 10rem;
+   
 }

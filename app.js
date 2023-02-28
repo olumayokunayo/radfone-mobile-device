@@ -407,6 +407,28 @@ function validPhoneNumber(phoneNumber){
     </div>
     <h3>Recents</h3>
     </div>
+    <div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>
     `
     let gotten = JSON.parse(localStorage.getItem("log"))
     console.log(gotten);
@@ -465,31 +487,68 @@ function saveContactBtn(){
     // let screenInput = document.getElementById("screenInput");
     // mobile.textContent = screenInput.value;
     // let phoneNumber = screenInput.value;
-    let contactInfo = {
-        firstName: fName.value,
-        lastName: lName.value,
-        mobile: mobile.value
+    if(fName.value == "" ||  mobile.value == "" ){
+        alert("Enter contact details")
+    } else {
+        let contactInfo = {
+            firstName: fName.value,
+            lastName: lName.value,
+            mobile: mobile.value
+        }
+        let contactArr = JSON.parse(localStorage.getItem("contact")) || [];
+        contactArr.push(contactInfo);
+        localStorage.setItem("contact",JSON.stringify(contactArr));
+        modal.style.display = "none";
+        keypadBtn()
+        // window.location.reload()
+        console.log(contactArr);
     }
-
-    let contactArr = JSON.parse(localStorage.getItem("contact")) || [];
-    contactArr.push(contactInfo);
-    localStorage.setItem("contact",JSON.stringify(contactArr));
-    modal.style.display = "none";
-    // window.location.reload()
-    console.log(contactArr);
 }
 
+function closeBtn(){
+    let modal = document.querySelector(".modal")
+    modal.style.display = "none"
+    keypadBtn()
+}
 function contactBtn(){
-    show1.innerHTML =  `<p class="con">Contacts</p>`
+    show1.innerHTML =  `<div class="contactHead">
+    <p class="con">Contacts</p>
+    <p onclick="editBtn()" class="edit">Edit</p>
+    </div>
+    <div class="callSection">
+    <div class="callNavDiv">
+        <nav class="navCallSection">
+            <div class="navspan">
+            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+            <span>Favorites</span>
+            </div>
+            <div class="navspan">
+            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+            <span>Recents</span>
+            </div>
+            <div class="navspan">
+            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+            <span>Contact</span>
+            </div>
+            <div class="navspan">
+            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+            <span>Keypad</span>
+            </div>
+        </nav>
+    </div>
+    </div>`
     let savedContacts = JSON.parse(localStorage.getItem("contact"))
     console.log(savedContacts);
     savedContacts.forEach(element => {
         console.log(element);
         show1.innerHTML += `<div class="contactsDiv">
         <div class="contacts">
+        <button class="contactBtn" onclick="delBtn()"><ion-icon name="close-outline"></ion-icon></button>
         <p>${element.firstName}</p>
+        <p>${element.mobile}</p>
         </div>
         </div>
+        <hr>
         <div class="callSection">
     <div class="callNavDiv">
         <nav class="navCallSection">
@@ -513,4 +572,49 @@ function contactBtn(){
     </div>
     </div>`
     });
+
+    
 }
+
+function editBtn(){
+let contactBtns = document.querySelectorAll(".contactBtn");
+contactBtns.forEach(btn => {
+    if(btn.style.display == "none"){
+        btn.style.display = "block"
+    } else {
+        btn.style.display = "none"
+    }
+});
+}
+
+function delBtn(i){
+    let savedContacts = JSON.parse(localStorage.getItem("contact"));
+    savedContacts.splice(0, 1);
+    localStorage.setItem("contact", JSON.stringify(savedContacts))
+    contactBtn();
+}
+
+
+
+
+    // const video = document.getElementById('video');
+    // const canvas = document.getElementById('canvas');
+    // const snapButton = document.getElementById('snap');
+    // const context = canvas.getContext('2d');
+
+    // // Request permission to access the camera
+    // navigator.mediaDevices.getUserMedia({ video: true })
+    //   .then(stream => {
+    //     video.srcObject = stream;
+    //     video.play();
+    //   })
+    //   .catch(error => {
+    //     console.error('Could not access camera', error);
+    //   });
+
+    // // Take a photo when the "Take Photo" button is clicked
+    // snapButton.addEventListener('click', () => {
+    //   context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    //   // Do something with the image, like upload it to a server
+    // });
+ 
