@@ -11,8 +11,8 @@ function getDate(){
     let minutes = new Date().getMinutes();
    
 
-    hours = hours < 12 ? "0" + hours : hours;
-    minutes = minutes < 12 ? "0" + minutes : minutes;
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
     
     let time = `${hours}:${minutes}`
    
@@ -20,8 +20,7 @@ function getDate(){
     <p class="date">${newDate}</p>
     <p class="time">${time}</p>
     </div>`
-    }, 1000);
-    
+    }, 1000);   
 }
 getDate();
 
@@ -65,8 +64,8 @@ appsBtn.addEventListener("click", function(){
    show1.innerHTML = `<div class="appsDiv">
    <div class="apps">
    <div class="iconText">
-   <p><ion-icon class="icon tiktok" name="logo-tiktok"></ion-icon></p>
-   <span>Tiktok</span>
+   <p><ion-icon class="icon instagram" name="logo-instagram"></ion-icon></p>
+   <span>Instagram</span>
    </div>
    <div class="iconText">
    <p><ion-icon class="icon whatsapp" name="logo-whatsapp"></ion-icon></p>
@@ -76,17 +75,21 @@ appsBtn.addEventListener("click", function(){
    <p><ion-icon class="icon mail" name="mail-unread-outline"></ion-icon></p>
    <span>Mail</span>
    </div>
+   <div class="iconText" onclick="calculatorBtn()">
+   <p><ion-icon class="icon clock" name="calculator-outline"></ion-icon></p>
+   <span>Calculator</span>
+   </div>
    <div class="iconText">
    <p><ion-icon class="icon facebook" name="logo-facebook"></ion-icon></p>
    <span>Facebook</span>
    </div>
    <div class="iconText">
-   <p><ion-icon class="icon discord" name="logo-discord"></ion-icon></p>
-   <span>Discord</span>
+   <p><ion-icon class="icon applelogo" name="logo-apple"></ion-icon></p>
+   <span>Airtime Gen</span>
    </div>
    <div class="iconText">
-   <p><ion-icon class="icon yahoo" name="logo-yahoo"></ion-icon></p>
-   <span>Yahoo Mail</span>
+   <p><ion-icon  class="icon settings" name="settings-outline"></ion-icon></p>
+   <span>Settings</span>
    </div>
    <div class="iconText">
    <p><ion-icon class="icon file" name="folder-outline"></ion-icon></p>
@@ -97,16 +100,12 @@ appsBtn.addEventListener("click", function(){
    <span>Camera</span>
    </div>
    <div class="iconText">
-   <p><ion-icon class="icon applelogo" name="logo-apple"></ion-icon></p>
-   <span>TV</span>
+   <p><ion-icon class="icon discord" name="logo-discord"></ion-icon></p>
+   <span>Discord</span>
    </div>
-   <div class="iconText">
+   <div class="iconText" onclick="clockbtn()">
    <p><ion-icon class="icon clock" name="time-outline"></ion-icon></p>
    <span>Clock</span>
-   </div>
-   <div class="iconText">
-   <p><ion-icon class="icon appstore" name="logo-apple-appstore"></ion-icon></p>
-   <span>App Store</span>
    </div>
    <div class="iconText">
    <p><ion-icon class="icon navigate" name="navigate-outline"></ion-icon></p>
@@ -117,19 +116,17 @@ appsBtn.addEventListener("click", function(){
    <span>Calendar</span>
    </div>
    <div class="iconText">
-   <p><ion-icon class="icon instagram" name="logo-instagram"></ion-icon></p>
-   <span>Instagram</span>
+   <p><ion-icon class="icon tiktok" name="logo-tiktok"></ion-icon></p>
+   <span>Tiktok</span>
+   </div>
+   <div class="iconText">
+   <p><ion-icon class="icon yahoo" name="logo-yahoo"></ion-icon></p>
+   <span>Yahoo Mail</span>
    </div>
    <div class="iconText">
    <p><ion-icon class="icon bitcoin" name="logo-bitcoin"></ion-icon></p>
    <span>Binance</span>
    </div>
-   <div class="iconText">
-   <p><ion-icon  class="icon settings" name="settings-outline"></ion-icon></p>
-   <span>Settings</span>
-   </div>
-  
-
    </div>
    <div class="bottomNav">
    <nav class="nav">
@@ -167,7 +164,8 @@ function callBtn(){
             </div>
         </nav>
     </div>
-    </div>`
+    </div>
+  `
     rad.classList.add("darkMode")
     
   function getDate(){
@@ -432,45 +430,47 @@ function validPhoneNumber(phoneNumber){
     `
     let gotten = JSON.parse(localStorage.getItem("log"))
     console.log(gotten);
-    gotten.forEach(element => {
-        show1.innerHTML += `<div class="recentDiv">
-        <div class"numWrap">
-        <span class="outgoing material-symbols-outlined">
-        call_made </span>
-        <div class="callLog">
-        <span>
-        <p class="num">${element.number}</p></span>
-        </div>
-        </div>
-        <div class="TimeAndDate">
-        <p class="date">${element.date}</p>
-        <p class="time">${element.time}</p>
-        </div>
-        </div>
-        <div class="callSection">
-    <div class="callNavDiv">
-        <nav class="navCallSection">
-            <div class="navspan">
-            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
-            <span>Favorites</span>
+    if(gotten){
+        gotten.forEach(element => {
+            show1.innerHTML += `<div class="recentDiv">
+            <div class"numWrap">
+            <span class="outgoing material-symbols-outlined">
+            call_made </span>
+            <div class="callLog">
+            <span>
+            <p class="num">${element.number}</p></span>
             </div>
-            <div class="navspan">
-            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
-            <span>Recents</span>
             </div>
-            <div class="navspan">
-            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
-            <span>Contact</span>
+            <div class="TimeAndDate">
+            <p class="date">${element.date}</p>
+            <p class="time">${element.time}</p>
             </div>
-            <div class="navspan">
-            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
-            <span>Keypad</span>
             </div>
-        </nav>
-    </div>
-    </div>`
-
-    });
+            <div class="callSection">
+        <div class="callNavDiv">
+            <nav class="navCallSection">
+                <div class="navspan">
+                <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+                <span>Favorites</span>
+                </div>
+                <div class="navspan">
+                <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+                <span>Recents</span>
+                </div>
+                <div class="navspan">
+                <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+                <span>Contact</span>
+                </div>
+                <div class="navspan">
+                <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+                <span>Keypad</span>
+                </div>
+            </nav>
+        </div>
+        </div>`
+        });
+    }
+  
    }
 
 function saveBtn(){
@@ -539,40 +539,43 @@ function contactBtn(){
     </div>`
     let savedContacts = JSON.parse(localStorage.getItem("contact"))
     console.log(savedContacts);
-    savedContacts.forEach(element => {
-        console.log(element);
-        show1.innerHTML += `<div class="contactsDiv">
-        <div class="contacts">
-        <button class="contactBtn" onclick="delBtn()"><ion-icon name="close-outline"></ion-icon></button>
-        <p>${element.firstName}</p>
-        <p>${element.mobile}</p>
+    if(savedContacts){
+        savedContacts.forEach(element => {
+            console.log(element);
+            show1.innerHTML += `<div class="contactsDiv">
+            <div class="contacts">
+            <button class="contactBtn" onclick="delBtnn()"><ion-icon name="close-outline"></ion-icon></button>
+            <p>${element.firstName}</p>
+            <p>${element.mobile}</p>
+            </div>
+            </div>
+            <hr>
+            <div class="callSection">
+        <div class="callNavDiv">
+            <nav class="navCallSection">
+                <div class="navspan">
+                <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
+                <span>Favorites</span>
+                </div>
+                <div class="navspan">
+                <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
+                <span>Recents</span>
+                </div>
+                <div class="navspan">
+                <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
+                <span>Contact</span>
+                </div>
+                <div class="navspan">
+                <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
+                <span>Keypad</span>
+                </div>
+            </nav>
         </div>
-        </div>
-        <hr>
-        <div class="callSection">
-    <div class="callNavDiv">
-        <nav class="navCallSection">
-            <div class="navspan">
-            <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
-            <span>Favorites</span>
-            </div>
-            <div class="navspan">
-            <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
-            <span>Recents</span>
-            </div>
-            <div class="navspan">
-            <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
-            <span>Contact</span>
-            </div>
-            <div class="navspan">
-            <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
-            <span>Keypad</span>
-            </div>
-        </nav>
-    </div>
-    </div>`
-    });
-
+        </div>`
+        });
+    
+    }
+   
     
 }
 
@@ -587,7 +590,7 @@ contactBtns.forEach(btn => {
 });
 }
 
-function delBtn(i){
+function delBtnn(i){
     let savedContacts = JSON.parse(localStorage.getItem("contact"));
     savedContacts.splice(0, 1);
     localStorage.setItem("contact", JSON.stringify(savedContacts))
@@ -618,3 +621,109 @@ function delBtn(i){
     //   // Do something with the image, like upload it to a server
     // });
  
+
+    // let calculatorBtn = document.getElementById("calculatorBtn");
+   function calculatorBtn(){
+    screen.innerHTML = ""
+        show1.innerHTML = `<div class="calculator">
+        <div>
+          <input type="text" class="calcscreen" />
+        </div>
+        <div class="buttons">
+          <button class="btn btn-yellow" data-num="*">*</button>
+          <button class="btn btn-yellow" data-num="/">/</button>
+          <button class="btn btn-yellow" data-num="-">-</button>
+          <button class="btn btn-yellow" data-num="+">+</button>
+  
+          <button class="btn btn-grey" data-num="9">9</button>
+          <button class="btn btn-grey" data-num="8">8</button>
+          <button class="btn btn-grey" data-num="7">7</button>
+          <button class="btn btn-grey" data-num="6">6</button>
+          <button class="btn btn-grey" data-num="5">5</button>
+          <button class="btn btn-grey" data-num="4">4</button>
+          <button class="btn btn-grey" data-num="3">3</button>
+          <button class="btn btn-grey" data-num="2">2</button>
+          <button class="btn btn-grey" data-num="1">1</button>
+          <button class="btn btn-grey" data-num="0">0</button>
+          <button class="btn btn-grey" data-num=".">.</button>
+
+          <button class="btn-equal">=</button>
+          <button class="btn-clear">C</button>
+        </div>
+      </div>
+      `
+      
+      rad.classList.add("darkMode")
+
+    const show = document.querySelector(".calcscreen");
+    const equal = document.querySelector(".btn-equal");
+    const clear = document.querySelector(".btn-clear");
+    const button = document.querySelectorAll(".btn");
+
+
+    button.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      let value = e.currentTarget.dataset.num;
+      show.value += value;
+    });
+  
+    // Equal button
+    equal.addEventListener("click", function (e) {
+      if (show === "") {
+        show.value = "Enter your inputs";
+      } else {
+        let answer = eval(show.value);
+        show.value = answer;
+      }
+    });
+  
+    //    Clear button
+    clear.addEventListener("click", function (e) {
+      show.value = 0;
+    });
+  });
+    }
+
+    let homeLineBtn = document.getElementById("homeLineBtn");
+    homeLineBtn.addEventListener("click", function(){
+        show1.innerHTML = ""
+        screen.style.display = "block"
+        flashlight.style.display = "block"
+        cam.style.display = "block"
+        menu.style.display = "block"
+        rad.classList.remove("darkMode")
+    })
+
+    function clockbtn(){
+        show1.innerHTML = ""
+        show1.innerHTML = `<div class="clockDiv  animate__animated animate__backInUp">
+        <div id="MyClock" class="myclock"></div>
+        </div>`
+        rad.classList.add("darkMode")
+
+        // setInterval(() => {
+            var currentDate = new Date();
+            var hours = currentDate.getHours();
+            var minutes = currentDate.getMinutes();
+            var seconds = currentDate.getSeconds();
+            let session = "AM";
+          
+            if (hours === 0) {
+              hours = 12;
+            }
+            if (hours > 12) {
+              hours = hours - 12;
+              session = "PM";
+            }
+          
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+          
+            var time = `${hours} : ${minutes} : ${seconds} ${session}`;
+            document.querySelector(".clockDiv").innerHTML = time;
+        // }, 1000); 
+    }
+   
+      
+      
