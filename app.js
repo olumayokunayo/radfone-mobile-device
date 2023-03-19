@@ -1,26 +1,25 @@
-// GET DATE 
+// GET DATE
 
 let screen = document.getElementById("show");
 let staySafe = document.querySelector(".staySafe");
 
-function getDate(){
-    setInterval(() => {
+function getDate() {
+  setInterval(() => {
     let date = new Date().toString().split(" ");
-    let newDate = `${date[0]}, ${date[1]} ${date[2]} `
+    let newDate = `${date[0]}, ${date[1]} ${date[2]} `;
     let hours = new Date().getHours();
     let minutes = new Date().getMinutes();
-   
 
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
-    
-    let time = `${hours}:${minutes}`
-   
+
+    let time = `${hours}:${minutes}`;
+
     screen.innerHTML = `<div class="dateAndTime">
     <p class="date">${newDate}</p>
     <p class="time">${time}</p>
-    </div>`
-    }, 1000);   
+    </div>`;
+  }, 1000);
 }
 getDate();
 
@@ -31,37 +30,36 @@ let radfone = document.getElementById("radfone");
 let whiteMode = document.querySelector(".whiteMode");
 let darkMode = document.querySelector(".darkMode");
 let flashlight = document.querySelector(".flashlight");
-let rad = document.getElementById("rad")
-let cam = document.querySelector(".cam")
-let menu = document.querySelector(".menu")
+let rad = document.getElementById("rad");
+let cam = document.querySelector(".cam");
+let menu = document.querySelector(".menu");
 
-flashBtn.addEventListener("click", function(){
-if(rad.classList.contains("whiteMode")){
-    rad.classList.remove("whiteMode")
-    flashlight.style.backgroundColor = "#222"
-    cam.style.display = "block"
-    menu.style.display = "block"
-}else {
-    rad.classList.add("whiteMode")
-    flashlight.style.backgroundColor = "#222"
-    flashlight.style.color = "#fff"
-    cam.style.display = "none"
-    menu.style.display = "none"
-}
-})
-
+flashBtn.addEventListener("click", function () {
+  if (rad.classList.contains("whiteMode")) {
+    rad.classList.remove("whiteMode");
+    flashlight.style.backgroundColor = "#222";
+    cam.style.display = "block";
+    menu.style.display = "block";
+  } else {
+    rad.classList.add("whiteMode");
+    flashlight.style.backgroundColor = "#222";
+    flashlight.style.color = "#fff";
+    cam.style.display = "none";
+    menu.style.display = "none";
+  }
+});
 
 // SHOW APPS
 
 let show1 = document.getElementById("show1");
-let appsBtn = document.getElementById("appsBtn")
+let appsBtn = document.getElementById("appsBtn");
 
-appsBtn.addEventListener("click", function(){
-    screen.style.display = "none"
-    flashlight.style.display = "none"
-    cam.style.display = "none"
-    menu.style.display = "none"
-   show1.innerHTML = `<div class="appsDiv">
+appsBtn.addEventListener("click", function () {
+  screen.style.display = "none";
+  flashlight.style.display = "none";
+  cam.style.display = "none";
+  menu.style.display = "none";
+  show1.innerHTML = `<div class="appsDiv">
    <div class="apps">
    <div class="iconText">
    <p><ion-icon class="icon instagram" name="logo-instagram"></ion-icon></p>
@@ -83,9 +81,9 @@ appsBtn.addEventListener("click", function(){
    <p><ion-icon class="icon facebook" name="logo-facebook"></ion-icon></p>
    <span>Facebook</span>
    </div>
-   <div class="iconText">
+   <div class="iconText" onclick="generator()">
    <p><ion-icon class="icon applelogo" name="logo-apple"></ion-icon></p>
-   <span>Airtime Gen</span>
+   <span>Generator</span>
    </div>
    <div class="iconText">
    <p><ion-icon  class="icon settings" name="settings-outline"></ion-icon></p>
@@ -137,13 +135,13 @@ appsBtn.addEventListener("click", function(){
    </nav>
    </div>
 </div>`;
-})
+});
 
 // CALL SECTION
 
-function callBtn(){
-    show1.innerHTML = ""
-    show1.innerHTML = `<div class="callSection">
+function callBtn() {
+  show1.innerHTML = "";
+  show1.innerHTML = `<div class="callSection">
     <div class="callNavDiv">
         <nav class="navCallSection">
             <div class="navspan">
@@ -165,27 +163,27 @@ function callBtn(){
         </nav>
     </div>
     </div>
-  `
-    rad.classList.add("darkMode")
-    
-  function getDate(){
-        setInterval(() => {
-        let date = new Date().toString().split(" ");
-        let newDate = `${date[0]}, ${date[1]} ${date[2]} `
-        let hours = new Date().getHours();
-        let minutes = new Date().getMinutes();
-        hours = hours < 12 ? "0" + hours : hours;
-        minutes = minutes < 12 ? "0" + minutes : minutes;
-        let time = `${hours}:${minutes}`
-        staySafe.textContent = `${time}`
-        }, 1000); 
-    }
-    getDate();
+  `;
+  rad.classList.add("darkMode");
+
+  function getDate() {
+    setInterval(() => {
+      let date = new Date().toString().split(" ");
+      let newDate = `${date[0]}, ${date[1]} ${date[2]} `;
+      let hours = new Date().getHours();
+      let minutes = new Date().getMinutes();
+      hours = hours < 12 ? "0" + hours : hours;
+      minutes = minutes < 12 ? "0" + minutes : minutes;
+      let time = `${hours}:${minutes}`;
+      staySafe.textContent = `${time}`;
+    }, 1000);
+  }
+  getDate();
 }
 
-function keypadBtn(){
-    screen.innerHTML = ""
-    show1.innerHTML = `<div class="keypadDiv">
+function keypadBtn() {
+  screen.innerHTML = "";
+  show1.innerHTML = `<div class="keypadDiv">
     <div class="inputDiv">
     <input id="screenInput" type="text">
     <div class="modal" tabindex="-1">
@@ -290,115 +288,272 @@ function keypadBtn(){
         </nav>
     </div>
     </div>
-`
+`;
 
+  // KEYPAD BUTTONS
+  let btndel = document.querySelector(".btn-del");
+  let save = document.querySelector(".save");
+  let screenInput = document.getElementById("screenInput");
+  let buttons = document.querySelectorAll(".btn");
 
-// KEYPAD BUTTONS
-let btndel = document.querySelector(".btn-del");
-let save = document.querySelector(".save");
-let screenInput = document.getElementById("screenInput");
-let buttons = document.querySelectorAll(".btn");
-
-buttons.forEach(function(btn){
-    btn.addEventListener("click", function(e){
-       let digits = e.currentTarget.dataset.num;
-       screenInput.value += `${digits}`
-       btndel.style.display = "block"
-       save.style.display = "block"
-    })
-
-})
-
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      let digits = e.currentTarget.dataset.num;
+      screenInput.value += `${digits}`;
+      btndel.style.display = "block";
+      save.style.display = "block";
+    });
+  });
 }
 
-//  DELETE 
+//  DELETE
 
-function delBtn(){
- let inputValue = screenInput.value;
- if(inputValue.length > 0){
-   inputValue = inputValue.slice(0,-1)
-   screenInput.value = inputValue;
- }
+function delBtn() {
+  let inputValue = screenInput.value;
+  if (inputValue.length > 0) {
+    inputValue = inputValue.slice(0, -1);
+    screenInput.value = inputValue;
+  }
 }
+let netArr = [];
+function generator() {
+    show1.innerHTML = "";
+    rad.classList.add("darkMode");
+    show1.innerHTML = `<div class="generator">
+          <h1>Generate your airtime.</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam fuga vel voluptatum, molestias omnis sapiente, 
+          iste magnam nobis veniam, dignissimos voluptas saepe voluptatem dicta aperiam aut delectus blanditiis laudantium asperiores!</p>
+          </div>
+          <div>
+          <label for="network" class="selectNet">Select your network provider: </label>
+          <select name="networks" id="networks">
+          <option class="net" value="MTN">MTN</option>
+          <option class="net" value="GLO">GLO</option>
+          <option class="net" value="ETI">ETI</option>
+          <option class="net" value="AIRTEL">AIRTEL</option>
+          </select>
+          </div>
+          <div class="amountDiv">
+          <input type="number" class="amtInput" placeholder="amount">
+          <button class="genBtn" id="genBtn">Generate</button>
+          </div>
+          <div class="cardInfo">
+          <h1>Pin Generation Successful</h1>
+          <div class="providerDiv">
+          <p>Network provider:</p>
+          <span class="netValue"></span>
+          </div>
+          <div class="providerDiv">
+          <p>Amount:</p>
+          <span class="amountValue"></span>
+          </div>
+          <div class="providerDiv">
+          <p>Pin:</p>
+          <span class="pinValue"></span>
+          </div>
+          </div>
+          `;
+    let provider = "";
+    let networkSelect = document.getElementById("networks");
+    networkSelect.addEventListener("change", function () {
+      let selectedOption = networkSelect.options[networkSelect.selectedIndex];
+      provider = selectedOption.getAttribute("value");
+      console.log(provider);
+    });
+  
+    let genBtn = document.getElementById("genBtn");
+    let amtInput = document.querySelector(".amtInput");
+    let cardInfo = document.querySelector(".cardInfo");
+    let netValue = document.querySelector(".netValue");
+    let amountValue = document.querySelector(".amountValue");
+    let pinValue = document.querySelector(".pinValue");
+    genBtn.addEventListener("click", function () {
+      let randomInt = (min, max) =>
+        Math.floor(Math.random() * (max - min + 1) - min);
+      let randomPin = randomInt(100000000, 9999999999);
+      console.log(randomPin);
+      amount = Number(amtInput.value);
+      console.log(amount);
+      if (amount == "") {
+        alert("Choose a network");
+      } else {
+          let airtimeInfo = {
+              network: `${provider}`,
+              amount: `${amount}`,
+              pin: `${randomPin}`
+          }
+          netArr.push(airtimeInfo)
+          console.log(netArr);
+        amountValue.textContent = amtInput.value;
+        cardInfo.style.display = "block";
+        netValue.textContent = provider;
+        pinValue.innerHTML = `${randomPin}
+                  <button class="copyBtn" id="copyBtn"><ion-icon name="copy-outline"></ion-icon></button>`;
+  
+                  // copy
+  
+        let copyBtn = document.getElementById("copyBtn");
+        copyBtn.addEventListener("click", function () {
+          let pinValue = document.querySelector(".pinValue").innerText;
+          navigator.clipboard
+            .writeText(pinValue)
+            .then(() => {
+              alert("copied");
+              console.log("Text copied");
+            })
+            .catch(() => {
+              alert("error");
+              console.log("Error copying text");
+            });
+        });
+      }
+    });
+  }
+  
 
 // CALL
 
-function dialBtn(){
-    let recentArr = [];
-    let screenInput = document.getElementById("screenInput");
-    let phoneNumber = screenInput.value;
-   
-        let date = new Date().toString().split(" ");
-        let month = new Date().getMonth();
-        let newDate = `${date[0]}, ${date[1]} ${date[2]} `
-        let hours = new Date().getHours();
-        let minutes = new Date().getMinutes();
-        hours = hours < 12 ? "0" + hours : hours;
-        minutes = minutes < 12 ? "0" + minutes : minutes;
-        let time = `${hours}:${minutes}`
-        let updatedDate = `${date[2]}/${month}/${date[3]}`
+function dialBtn() {
+  let callingLabel = document.getElementById("callinglabel");
+  let screenInput = document.getElementById("screenInput");
+  let phoneNumber = screenInput.value;
 
- 
-    console.log(time,updatedDate);
-    const validPhone = validPhoneNumber(phoneNumber)
+  let date = new Date().toString().split(" ");
+  let month = new Date().getMonth();
+  let newDate = `${date[0]}, ${date[1]} ${date[2]} `;
+  let hours = new Date().getHours();
+  let minutes = new Date().getMinutes();
+  hours = hours < 12 ? "0" + hours : hours;
+  minutes = minutes < 12 ? "0" + minutes : minutes;
+  let time = `${hours}:${minutes}`;
+  let updatedDate = `${date[2]}/${month}/${date[3]}`;
 
-    if(validPhone){
-      let callInfo = {
-        number: validPhone,
-        time: time, 
-        date: updatedDate
-        
-      }
-      console.log(callInfo);
-      let recentArr = JSON.parse(localStorage.getItem("log")) || [];
-      recentArr.push(callInfo)
-      localStorage.setItem("log", JSON.stringify(recentArr))
-      console.log(recentArr);
-        alert("Calling")
-        // initiateCall(validPhone)
-    } else {
-        alert("Number not available")
-    }
+//   console.log(time, updatedDate);
+  const validPhone = validPhoneNumber(phoneNumber);
+
+  let found = netArr.find((element)=> element.network && element.amount && element.pin)
+  console.log(found);
+
+  const inputLength = phoneNumber.length;
+  const startsWithZero = phoneNumber.startsWith(0)
+
+  if (validPhone) {
+    let callInfo = {
+      number: validPhone,
+      time: time,
+      date: updatedDate,
+    };
+    console.log(callInfo);
+    let recentArr = JSON.parse(localStorage.getItem("log")) || [];
+    recentArr.push(callInfo);
+    localStorage.setItem("log", JSON.stringify(recentArr));
+    console.log(recentArr);
+    show1.innerHTML = `<div class="callDiv">
+    <div class="callContainer">
+    <div class="callTop">
+    <h1 class="callersName">Dejii</h1>
+    <p class="callinglabel"></p>
+    </div>
+    <div class="callIcons">
+    <div class="callIcon">
+    <span><ion-icon name="mic-off-outline"></ion-icon></span>
+    <p>mute</p>
+    </div>
+    <div class="callIcon">
+    <span><ion-icon name="keypad-outline"></ion-icon></span>
+    <p>keypad</p>
+    </div>
+    <div class="callIcon">
+    <span><ion-icon name="volume-high-outline"></ion-icon></span>
+    <p>audio</p>
+    </div>
+    <div class="callIcon">
+    <span><ion-icon name="add-outline"></ion-icon></span>
+    <p>add call</p>
+    </div>
+    <div class="callIcon">
+    <span><ion-icon name="videocam-outline"></ion-icon></span>
+    <p>FaceTime</p>
+    </div>
+    <div class="callIcon">
+    <span><ion-icon name="person-circle-outline"></ion-icon></span>
+    <p>contacts</p>
+    </div>
+    </div>
+    <div class="callIco endBtn">
+    <span class="material-symbols-outlined">call_end</span>
+    </div>
+    </div>
+    </div>`;
+
+    let callersID = document.querySelector(".callersName");
+    let callinglabel = document.querySelector(".callinglabel");
+    callersID.textContent = phoneNumber;
+    callinglabel.textContent = "calling...";
+    // calling.textContent = "calling"
+    console.log(callingLabel);
+    console.log(callersID);
+    console.log(phoneNumber);
+    // alert("Calling");
+  } else if (phoneNumber.startsWith("*555*") && phoneNumber.includes(`${found.pin}`) && phoneNumber.endsWith("#")){
+    alert("Recharge Successful 👍")
+    alert(`#${found.amount} has been added to your balance.`)
+    keypadBtn();
+  } else if(phoneNumber.includes("*556")){
+    alert(`Main balance is #${found.amount}.00`)
+  }
+  else {
+    alert("Number not available");
+  }
+
+  let endBtn = document.querySelector(".endBtn");
+  endBtn.addEventListener("click", function () {
+    let callinglabel = document.querySelector(".callinglabel");
+    callinglabel.textContent = "call ended";
+
+    let interval = setTimeout(() => {
+      keypadBtn();
+      clearInterval(interval);
+    }, 1000);
+    
+  });
 }
 
-function validPhoneNumber(phoneNumber){
+function validPhoneNumber(phoneNumber) {
+  // remove all numeric
+  const newPhoneNumber = phoneNumber.replace(/\D/g, "");
 
-    // remove all numeric 
-    const newPhoneNumber = phoneNumber.replace(/\D/g, "");
+  // set to 10 digits
+  const phonePattern = /^\d{11}$/;
 
-    // set to 10 digits
-    const phonePattern = (/^\d{11}$/);
+  // test if number passes pattern test (11 digits)
+  const isValidPhoneNumber = phonePattern.test(newPhoneNumber);
 
-    // test if number passes pattern test (11 digits)
-    const isValidPhoneNumber = phonePattern.test(newPhoneNumber)
-
-    if(isValidPhoneNumber){
-        return newPhoneNumber;
-    } else {
-        return false;
-    }
+  if (isValidPhoneNumber) {
+    return newPhoneNumber;
+  } else {
+    return false;
+  }
 }
 
+//   function initiateCall(phoneNumber) {
+//     const accountSid = 'AC5d2d20165f208a9e375d41776c3a3c04';
+//     const authToken = '2fa60edf0d21419d0ae4d7bb4c8d5179';
+//     const client = require('twilio')(accountSid, authToken);
 
-    //   function initiateCall(phoneNumber) {
-    //     const accountSid = 'AC5d2d20165f208a9e375d41776c3a3c04';
-    //     const authToken = '2fa60edf0d21419d0ae4d7bb4c8d5179';
-    //     const client = require('twilio')(accountSid, authToken);
-        
-    //     client.calls.create({
-    //       url: 'http://demo.twilio.com/docs/voice.xml',
-    //       to: `+1${phoneNumber}`,
-    //       from: '+12766378786'
-    //     })
-    //     .then(call => console.log(call.sid))
-    //     .catch(error => console.log(error));
-    //   }
+//     client.calls.create({
+//       url: 'http://demo.twilio.com/docs/voice.xml',
+//       to: `+1${phoneNumber}`,
+//       from: '+12766378786'
+//     })
+//     .then(call => console.log(call.sid))
+//     .catch(error => console.log(error));
+//   }
 
-    let show2 = document.getElementById("show2")
+let show2 = document.getElementById("show2");
 
-
-   function recentBtn(){
-    show1.innerHTML = `<div class="logsDiv">
+function recentBtn() {
+  show1.innerHTML = `<div class="logsDiv">
     <div class="logs">
     <button>ALL</button>
     <button>MISSED</button>
@@ -427,13 +582,14 @@ function validPhoneNumber(phoneNumber){
         </nav>
     </div>
     </div>
-    `
-    let gotten = JSON.parse(localStorage.getItem("log"))
-    console.log(gotten);
-    if(gotten){
-        gotten.forEach(element => {
-            show1.innerHTML += `<div class="recentDiv">
-            <div class"numWrap">
+    `;
+  let gotten = JSON.parse(localStorage.getItem("log"));
+  console.log(gotten);
+  if (gotten) {
+    gotten.forEach((element) => {
+      show1.innerHTML += `
+      <div class="recentDiv">
+            <div class="numWrap">
             <span class="outgoing material-symbols-outlined">
             call_made </span>
             <div class="callLog">
@@ -446,72 +602,50 @@ function validPhoneNumber(phoneNumber){
             <p class="time">${element.time}</p>
             </div>
             </div>
-            <div class="callSection">
-        <div class="callNavDiv">
-            <nav class="navCallSection">
-                <div class="navspan">
-                <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
-                <span>Favorites</span>
-                </div>
-                <div class="navspan">
-                <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
-                <span>Recents</span>
-                </div>
-                <div class="navspan">
-                <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
-                <span>Contact</span>
-                </div>
-                <div class="navspan">
-                <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
-                <span>Keypad</span>
-                </div>
-            </nav>
-        </div>
-        </div>`
-        });
-    }
-  
-   }
-
-function saveBtn(){
-    let modal = document.querySelector(".modal")
-    // alert("save?")
-modal.style.display = "block"
+            `;
+    });
+  }
 }
 
-function saveContactBtn(){
-    let modal = document.querySelector(".modal")
-    let fName = document.getElementById("fName")
-    let lName = document.getElementById("lName")
-    let mobile = document.getElementById("mobile")
-    // let screenInput = document.getElementById("screenInput");
-    // mobile.textContent = screenInput.value;
-    // let phoneNumber = screenInput.value;
-    if(fName.value == "" ||  mobile.value == "" ){
-        alert("Enter contact details")
-    } else {
-        let contactInfo = {
-            firstName: fName.value,
-            lastName: lName.value,
-            mobile: mobile.value
-        }
-        let contactArr = JSON.parse(localStorage.getItem("contact")) || [];
-        contactArr.push(contactInfo);
-        localStorage.setItem("contact",JSON.stringify(contactArr));
-        modal.style.display = "none";
-        keypadBtn()
-        // window.location.reload()
-        console.log(contactArr);
-    }
+function saveBtn() {
+  let modal = document.querySelector(".modal");
+  // alert("save?")
+  modal.style.display = "block";
 }
 
-function closeBtn(){
-    let modal = document.querySelector(".modal")
-    modal.style.display = "none"
-    keypadBtn()
+function saveContactBtn() {
+  let modal = document.querySelector(".modal");
+  let fName = document.getElementById("fName");
+  let lName = document.getElementById("lName");
+  let mobile = document.getElementById("mobile");
+  // let screenInput = document.getElementById("screenInput");
+  // mobile.textContent = screenInput.value;
+  // let phoneNumber = screenInput.value;
+  if (fName.value == "" || mobile.value == "") {
+    alert("Enter contact details");
+  } else {
+    let contactInfo = {
+      firstName: fName.value,
+      lastName: lName.value,
+      mobile: mobile.value,
+    };
+    let contactArr = JSON.parse(localStorage.getItem("contact")) || [];
+    contactArr.push(contactInfo);
+    localStorage.setItem("contact", JSON.stringify(contactArr));
+    modal.style.display = "none";
+    keypadBtn();
+    // window.location.reload()
+    console.log(contactArr);
+  }
 }
-function contactBtn(){
-    show1.innerHTML =  `<div class="contactHead">
+
+function closeBtn() {
+  let modal = document.querySelector(".modal");
+  modal.style.display = "none";
+  keypadBtn();
+}
+function contactBtn() {
+  show1.innerHTML = `<div class="contactHead">
     <p class="con">Contacts</p>
     <p onclick="editBtn()" class="edit">Edit</p>
     </div>
@@ -536,97 +670,70 @@ function contactBtn(){
             </div>
         </nav>
     </div>
-    </div>`
-    let savedContacts = JSON.parse(localStorage.getItem("contact"))
-    console.log(savedContacts);
-    if(savedContacts){
-        savedContacts.forEach(element => {
-            console.log(element);
-            show1.innerHTML += `<div class="contactsDiv">
+    </div>`;
+  let savedContacts = JSON.parse(localStorage.getItem("contact"));
+  console.log(savedContacts);
+  if (savedContacts) {
+    savedContacts.forEach((element) => {
+      console.log(element);
+      show1.innerHTML += `<div class="contactsDiv">
             <div class="contacts">
             <button class="contactBtn" onclick="delBtnn()"><ion-icon name="close-outline"></ion-icon></button>
             <p>${element.firstName}</p>
             <p>${element.mobile}</p>
+            <span class="recentcallIcon material-symbols-outlined">call</span>
             </div>
             </div>
             <hr>
-            <div class="callSection">
-        <div class="callNavDiv">
-            <nav class="navCallSection">
-                <div class="navspan">
-                <button><ion-icon class="callIcon" name="star-outline"></ion-icon></button>
-                <span>Favorites</span>
-                </div>
-                <div class="navspan">
-                <button onclick="recentBtn()"><ion-icon class="callIcon" name="time-outline"></ion-icon></button>
-                <span>Recents</span>
-                </div>
-                <div class="navspan">
-                <button onclick="contactBtn()"><ion-icon class="callIcon" name="person-outline"></ion-icon></button>
-                <span>Contact</span>
-                </div>
-                <div class="navspan">
-                <button onclick="keypadBtn()"><ion-icon class="callIcon" name="keypad-outline"></ion-icon></button>
-                <span>Keypad</span>
-                </div>
-            </nav>
-        </div>
-        </div>`
-        });
-    
-    }
-   
-    
+            `;
+    });
+  }
 }
 
-function editBtn(){
-let contactBtns = document.querySelectorAll(".contactBtn");
-contactBtns.forEach(btn => {
-    if(btn.style.display == "none"){
-        btn.style.display = "block"
+function editBtn() {
+  let contactBtns = document.querySelectorAll(".contactBtn");
+  contactBtns.forEach((btn) => {
+    if (btn.style.display == "none") {
+      btn.style.display = "block";
     } else {
-        btn.style.display = "none"
+      btn.style.display = "none";
     }
-});
+  });
 }
 
-function delBtnn(i){
-    let savedContacts = JSON.parse(localStorage.getItem("contact"));
-    savedContacts.splice(0, 1);
-    localStorage.setItem("contact", JSON.stringify(savedContacts))
-    contactBtn();
+function delBtnn(i) {
+  let savedContacts = JSON.parse(localStorage.getItem("contact"));
+  savedContacts.splice(0, 1);
+  localStorage.setItem("contact", JSON.stringify(savedContacts));
+  contactBtn();
 }
 
+// const video = document.getElementById('video');
+// const canvas = document.getElementById('canvas');
+// const snapButton = document.getElementById('snap');
+// const context = canvas.getContext('2d');
 
+// // Request permission to access the camera
+// navigator.mediaDevices.getUserMedia({ video: true })
+//   .then(stream => {
+//     video.srcObject = stream;
+//     video.play();
+//   })
+//   .catch(error => {
+//     console.error('Could not access camera', error);
+//   });
 
+// // Take a photo when the "Take Photo" button is clicked
+// snapButton.addEventListener('click', () => {
+//   context.drawImage(video, 0, 0, canvas.width, canvas.height);
+//   // Do something with the image, like upload it to a server
+// });
 
-    // const video = document.getElementById('video');
-    // const canvas = document.getElementById('canvas');
-    // const snapButton = document.getElementById('snap');
-    // const context = canvas.getContext('2d');
-
-    // // Request permission to access the camera
-    // navigator.mediaDevices.getUserMedia({ video: true })
-    //   .then(stream => {
-    //     video.srcObject = stream;
-    //     video.play();
-    //   })
-    //   .catch(error => {
-    //     console.error('Could not access camera', error);
-    //   });
-
-    // // Take a photo when the "Take Photo" button is clicked
-    // snapButton.addEventListener('click', () => {
-    //   context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    //   // Do something with the image, like upload it to a server
-    // });
- 
-
-    // let calculatorBtn = document.getElementById("calculatorBtn");
-   function calculatorBtn(){
-    screen.innerHTML = ""
-        show1.innerHTML = `<div class="calculator">
-        <div>
+// let calculatorBtn = document.getElementById("calculatorBtn");
+function calculatorBtn() {
+  screen.innerHTML = "";
+  show1.innerHTML = `<div class="calculator">
+        <div class="calcdiv">
           <input type="text" class="calcscreen" />
         </div>
         <div class="buttons">
@@ -651,22 +758,21 @@ function delBtnn(i){
           <button class="btn-clear">C</button>
         </div>
       </div>
-      `
-      
-      rad.classList.add("darkMode")
+      `;
 
-    const show = document.querySelector(".calcscreen");
-    const equal = document.querySelector(".btn-equal");
-    const clear = document.querySelector(".btn-clear");
-    const button = document.querySelectorAll(".btn");
+  rad.classList.add("darkMode");
 
+  const show = document.querySelector(".calcscreen");
+  const equal = document.querySelector(".btn-equal");
+  const clear = document.querySelector(".btn-clear");
+  const button = document.querySelectorAll(".btn");
 
-    button.forEach(function (btn) {
+  button.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       let value = e.currentTarget.dataset.num;
       show.value += value;
     });
-  
+
     // Equal button
     equal.addEventListener("click", function (e) {
       if (show === "") {
@@ -676,54 +782,52 @@ function delBtnn(i){
         show.value = answer;
       }
     });
-  
+
     //    Clear button
     clear.addEventListener("click", function (e) {
       show.value = 0;
     });
   });
-    }
+}
 
-    let homeLineBtn = document.getElementById("homeLineBtn");
-    homeLineBtn.addEventListener("click", function(){
-        show1.innerHTML = ""
-        screen.style.display = "block"
-        flashlight.style.display = "block"
-        cam.style.display = "block"
-        menu.style.display = "block"
-        rad.classList.remove("darkMode")
-    })
+let homeLineBtn = document.getElementById("homeLineBtn");
+homeLineBtn.addEventListener("click", function () {
+  show1.innerHTML = "";
+  screen.style.display = "block";
+  flashlight.style.display = "block";
+  cam.style.display = "block";
+  menu.style.display = "block";
+  rad.classList.remove("darkMode");
+});
 
-    function clockbtn(){
-        show1.innerHTML = ""
-        show1.innerHTML = `<div class="clockDiv  animate__animated animate__backInUp">
+function clockbtn() {
+  show1.innerHTML = "";
+  show1.innerHTML = `<div class="clockDiv  animate__animated animate__backInUp">
         <div id="MyClock" class="myclock"></div>
-        </div>`
-        rad.classList.add("darkMode")
+        </div>`;
+  rad.classList.add("darkMode");
 
-        // setInterval(() => {
-            var currentDate = new Date();
-            var hours = currentDate.getHours();
-            var minutes = currentDate.getMinutes();
-            var seconds = currentDate.getSeconds();
-            let session = "AM";
-          
-            if (hours === 0) {
-              hours = 12;
-            }
-            if (hours > 12) {
-              hours = hours - 12;
-              session = "PM";
-            }
-          
-            hours = hours < 10 ? "0" + hours : hours;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-          
-            var time = `${hours} : ${minutes} : ${seconds} ${session}`;
-            document.querySelector(".clockDiv").innerHTML = time;
-        // }, 1000); 
-    }
-   
-      
-      
+  // setInterval(() => {
+  var currentDate = new Date();
+  var hours = currentDate.getHours();
+  var minutes = currentDate.getMinutes();
+  var seconds = currentDate.getSeconds();
+  let session = "AM";
+
+  if (hours === 0) {
+    hours = 12;
+  }
+  if (hours > 12) {
+    hours = hours - 12;
+    session = "PM";
+  }
+
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  var time = `${hours} : ${minutes} : ${seconds} ${session}`;
+  document.querySelector(".clockDiv").innerHTML = time;
+  // }, 1000);
+}
+
